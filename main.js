@@ -14,7 +14,7 @@ module.exports.loop = function() {
     {
         if(Game.spawns[name].energy >= _workerCost)
         {
-            if(Game.creeps.length < 30 || !Game.creeps.length)
+            if(Game.creeps.length < 10 || !Game.creeps.length)
             {
                 var _name = _randomString.generate()
                 console.log(_name + ": Spawning");

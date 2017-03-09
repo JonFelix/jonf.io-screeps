@@ -25,9 +25,17 @@ var builder = {
             var _targets = creep.room.find(FIND_CONSTRUCTION_SITES);
             if(_targets.length)
             {
-                if(creep.build(_targets[0]) == ERR_NOT_IN_RANGE)
+                var _minTarget = _targets[0];
+                for(var target in _targets)
                 {
-                    creep.moveTo(_targets[0], {visualizePathStyle: {stroke: _constants.CREEP_BUILDING_COLOR}});
+                    if(target.progressTotal - target.progress < _minTarget.progressTotal - _minTarget.progess)
+                    {
+                        _minTarget = target;
+                    }
+                }
+                if(creep.build(_minTarget) == ERR_NOT_IN_RANGE)
+                {
+                    creep.moveTo(_minTarget, {visualizePathStyle: {stroke: _constants.CREEP_BUILDING_COLOR}});
                 }
             }
         }
