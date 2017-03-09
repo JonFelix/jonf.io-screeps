@@ -1,5 +1,5 @@
 var _constants = require('tools.Constants');
-var _creepRoles = {harvester:require('role.Harvester'), upgrader:require('role.Upgrader'), builder:require('role.Builder')};
+var _creepRoles = [require('role.Harvester'), require('role.Upgrader'), require('role.Builder')];
 var _randomString = require('tools.RandomString');
 
 
@@ -27,18 +27,8 @@ module.exports.loop = function() {
         }
         if(Game.creeps[name].memory.role != null)
         {
-            if(Game.creeps[name].memory.role == _constants.CREEP_ROLE_HARVESTER)
-            {
-                _creepRoles['harvester'].run(Game.creeps[name]);
-            }
-            else if(Game.creeps[name].memory.role == _constants.CREEP_ROLE_UPGRADER)
-            {
-                _creepRoles['upgrader'].run(Game.creeps[name]);
-            }
-            else if(Game.creeps[name].memory.role == _constants.CREEP_ROLE_BUILDER)
-            {
-                _creepRoles['builder'].run(Game.creeps[name]);
-            }
+            var _role = Game.creeps[name].memory.role;
+            _creepRoles[_role].run(Game.creeps[name]);
         }
         else if(!Game.creeps[name].spawning)
         {
