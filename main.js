@@ -11,7 +11,7 @@ module.exports.loop = function() {
     var _workerCost = _constants.CREEP_PART_WORK_COST + _constants.CREEP_PART_MOVE_COST + _constants.CREEP_PART_CARRY_COST;
     if(Game.spawns['Berlin'].energy >= _workerCost)
     {
-        if(Game.creeps.length < 6 || !Game.creeps.length)
+        if(Game.creeps.length < 30 || !Game.creeps.length)
         {
             var _name = _randomString.generate()
             console.log(_name + ": Spawning");
@@ -32,7 +32,7 @@ module.exports.loop = function() {
         }
         else if(!Game.creeps[name].spawning)
         {
-            if(_roleToSpawn = _creepRoles.length)
+            if(_roleToSpawn == _creepRoles.length)
             {
                 _roleToSpawn = 0;
             }

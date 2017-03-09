@@ -27,7 +27,7 @@ var builder = {
             {
                 if(creep.build(_targets[0]) == ERR_NOT_IN_RANGE)
                 {
-                    creep.moveTo(targets[0], {visualizePathStyle: {stroke: _constants.CREEP_BUILDING_COLOR}});
+                    creep.moveTo(_targets[0], {visualizePathStyle: {stroke: _constants.CREEP_BUILDING_COLOR}});
                 }
             }
         }
