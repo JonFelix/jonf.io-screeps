@@ -34,6 +34,13 @@ module.exports.loop = function() {
         if(Game.creeps[name].memory.role != null)
         {
             var _role = Game.creeps[name].memory.role;
+            if(_role == 0)
+            {
+                if(Object.keys(Game.spawns)[0].energy == Object.keys(Game.spawns)[0].carryCapacity) // TEMPORARY FIX
+                {
+                    _role = 1;
+                }
+            }
             _creepRoles[_role].run(Game.creeps[name]);
         }
         else if(!Game.creeps[name].spawning)
