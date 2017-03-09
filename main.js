@@ -1,5 +1,5 @@
 var _constants = require('tools.Constants');
-var _creepRoles = {harvester:require('role.Harvester'), upgrader:require('role.Upgrader')};
+var _creepRoles = {harvester:require('role.Harvester'), upgrader:require('role.Upgrader'), builder:require('role.Builder')};
 var _randomString = require('tools.RandomString');
 
 
@@ -11,7 +11,7 @@ module.exports.loop = function() {
     var _workerCost = _constants.CREEP_PART_WORK_COST + _constants.CREEP_PART_MOVE_COST + _constants.CREEP_PART_CARRY_COST;
     if(Game.spawns['Berlin'].energy >= _workerCost)
     {
-        if(Game.creeps.length < 6)
+        if(Game.creeps.length < 6 || !Game.creeps.length)
         {
             var _name = _randomString.generate()
             console.log(_name + ": Spawning");
@@ -34,6 +34,10 @@ module.exports.loop = function() {
             else if(Game.creeps[name].memory.role == _constants.CREEP_ROLE_UPGRADER)
             {
                 _creepRoles['upgrader'].run(Game.creeps[name]);
+            }
+            else if(Game.creeps[name].memory.role == _constants.CREEP_ROLE_BUILDER)
+            {
+                _creepRoles['builder'].run(Game.creeps[name]);
             }
         }
         else if(!Game.creeps[name].spawning)

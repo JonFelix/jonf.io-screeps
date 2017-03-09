@@ -6,7 +6,7 @@
  * var mod = require('role.Harvester');
  * mod.thing == 'a thing'; // true
  */
- var _constants = require('tools.Constants');
+var _constants = require('tools.Constants');
 var harvester = {
     run: function(creep) {
         if(creep.carry.energy < creep.carryCapacity)

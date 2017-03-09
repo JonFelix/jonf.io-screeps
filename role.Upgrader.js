@@ -6,7 +6,7 @@
  * var mod = require('role.Upgrader');
  * mod.thing == 'a thing'; // true
  */
-
+var _constants = require('tools.Constants');
 var upgrader = {
     run: function(creep) {
         if(creep.carry.energy <= 0)
