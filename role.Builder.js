@@ -12,7 +12,7 @@ var builder = {
         if(creep.memory.building && creep.carry.energy == 0)
         {
             creep.memory.building = false;
-            creep.say('Getting energy');
+            creep.say('Gathering');
         }
         if(!creep.memory.building && creep.carry.energy == creep.carryCapacity)
         {
@@ -27,7 +27,7 @@ var builder = {
             {
                 if(creep.build(_targets[0]) == ERR_NOT_IN_RANGE)
                 {
-                    creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#ffffff'}});
+                    creep.moveTo(targets[0], {visualizePathStyle: {stroke: _constants.CREEP_BUILDING_COLOR}});
                 }
             }
         }
@@ -35,7 +35,7 @@ var builder = {
         {
             if(Game.spawns['Berlin'].transferEnergy(creep, creep.carryCapacity) == ERR_NOT_IN_RANGE)
             {
-                creep.moveTo(Game.spawns['Berlin'], {visualizePathStyle: {stroke: '#ffaa00'}});
+                creep.moveTo(Game.spawns['Berlin'], {visualizePathStyle: {stroke: _constants.CREEP_GATHERING_COLOR}});
             }
         }
     },

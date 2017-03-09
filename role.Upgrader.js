@@ -13,14 +13,16 @@ var upgrader = {
         {
             if(Game.spawns['Berlin'].transferEnergy(creep, creep.carryCapacity) == ERR_NOT_IN_RANGE)
             {
-                creep.moveTo(Game.spawns['Berlin']);
+                creep.moveTo(Game.spawns['Berlin'], {visualizePathStyle: {stroke: _constants.CREEP_GATHERING_COLOR}});
+                creep.say('Gathering');
             }
         }
         else
         {
             if(creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE)
             {
-                creep.moveTo(creep.room.controller);
+                creep.moveTo(creep.room.controller, {visualizePathStyle: {stroke: _constants.CREEP_UPGRADING_COLOR}});
+                creep.say('Upgrading');
             }
         }
     },

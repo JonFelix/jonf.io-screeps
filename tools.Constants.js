@@ -20,3 +20,8 @@ module.exports.CREEP_PART_TOUGH_COST         = 10;
 module.exports.CREEP_ROLE_HARVESTER = 0;
 module.exports.CREEP_ROLE_UPGRADER = 1;
 module.exports.CREEP_ROLE_BUILDER = 2;
+
+module.exports.CREEP_GATHERING_COLOR = '#CD1773';
+module.exports.CREEP_UPGRADING_COLOR = '#7117CD';
+module.exports.CREEP_BUILDING_COLOR = '#007AF3';
+module.exports.CREEP_STORING_COLOR = '#F37800';

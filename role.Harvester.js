@@ -15,14 +15,16 @@ var harvester = {
             var _resources = creep.room.find(FIND_SOURCES);
             if(creep.harvest(_resources[0]) == ERR_NOT_IN_RANGE)
             {
-                creep.moveTo(_resources[0]);
+                creep.moveTo(_resources[0], {visualizePathStyle: {stroke: _constants.CREEP_GATHERING_COLOR}});
+                creep.say('Gathering');
             }
         }
         else
         {
             if(creep.transfer(Game.spawns['Berlin'], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE)
             {
-                creep.moveTo(Game.spawns['Berlin']);
+                creep.moveTo(Game.spawns['Berlin'], {visualizePathStyle: {stroke: _constants.CREEP_STORING_COLOR}});
+                creep.say('Storing');
             }
         }
     },
