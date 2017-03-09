@@ -6,6 +6,7 @@
  * var mod = require('role.Harvester');
  * mod.thing == 'a thing'; // true
  */
+ var _constants = require('tools.Constants');
 var harvester = {
     run: function(creep) {
         if(creep.carry.energy < creep.carryCapacity)
@@ -24,7 +25,10 @@ var harvester = {
                 creep.moveTo(Game.spawns['Berlin']);
             }
         }
+    },
+    role: function()
+    {
+        return _constants.CREEP_ROLE_HARVESTER; 
     }
-    
 }
-module.exports = harvester
+module.exports = harvester;

@@ -11,21 +11,22 @@ var upgrader = {
     run: function(creep) {
         if(creep.carry.energy < creep.carryCapacity)
         {
-            
-            var _resources = creep.room.find(FIND_SOURCES);
-            if(creep.harvest(_resources[0]) == ERR_NOT_IN_RANGE)
-            {
-                creep.moveTo(_resources[0]);
-            }
-        }
-        else
-        {
-            if(creep.transfer(Game.spawns['Berlin'], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE)
+            if(Game.spawns['Berlin'].transferEnergy(creep, creep.carryCapacity) == ERR_NOT_IN_RANGE)
             {
                 creep.moveTo(Game.spawns['Berlin']);
             }
         }
+        else
+        {
+            if(creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE)
+            {
+                creep.moveTo(creep.room.controller);
+            }
+        }
+    },
+    role: function()
+    {
+        return _constants.CREEP_ROLE_UPGRADER; 
     }
-    
 }
-module.exports = upgrader
+module.exports = upgrader;
