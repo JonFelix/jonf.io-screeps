@@ -18,6 +18,13 @@ var std = {
             }
         }
         return size;
+    },
+    GetFirstHashEntry: function(obj)
+    {
+        for (key in obj) 
+        {
+            return key;
+        }  
     }
 }
 module.exports= std;

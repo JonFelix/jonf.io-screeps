@@ -7,4 +7,4 @@
  * mod.thing == 'a thing'; // true
  */
 
-module.exports.CreepCount = 10;
+module.exports.CreepCount = 15;

@@ -15,7 +15,7 @@ var upgrader = {
             if(creep.harvest(_resources[0]) == ERR_NOT_IN_RANGE)
             {
                 creep.moveTo(_resources[0], {visualizePathStyle: {stroke: _constants.CREEP_GATHERING_COLOR}});
-                //creep.say('Gathering');
+                creep.say('Gathering');
             }
         }
         else
@@ -23,7 +23,7 @@ var upgrader = {
             if(creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE)
             {
                 creep.moveTo(creep.room.controller, {visualizePathStyle: {stroke: _constants.CREEP_UPGRADING_COLOR}});
-                //creep.say('Upgrading');
+                creep.say('Upgrading');
             }
         }
     },

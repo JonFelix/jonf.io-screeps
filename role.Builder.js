@@ -12,12 +12,12 @@ var builder = {
         if(creep.memory.building && creep.carry.energy == 0)
         {
             creep.memory.building = false;
-            //creep.say('Gathering');
+            creep.say('Gathering');
         }
         if(!creep.memory.building && creep.carry.energy == creep.carryCapacity)
         {
             creep.memory.building = true;
-            //creep.say('Building');
+            creep.say('Building');
         }
         
         if(creep.memory.building)
@@ -46,7 +46,7 @@ var builder = {
             if(creep.harvest(_resources[0]) == ERR_NOT_IN_RANGE)
             {
                 creep.moveTo(_resources[0], {visualizePathStyle: {stroke: _constants.CREEP_GATHERING_COLOR}});
-                //creep.say('Gathering');
+                creep.say('Gathering');
             }
         }
     },

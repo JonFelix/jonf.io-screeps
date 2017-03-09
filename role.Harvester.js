@@ -16,7 +16,7 @@ var harvester = {
             if(creep.harvest(_resources[0]) == ERR_NOT_IN_RANGE)
             {
                 creep.moveTo(_resources[0], {visualizePathStyle: {stroke: _constants.CREEP_GATHERING_COLOR}});
-                //creep.say('Gathering');
+                creep.say('Gathering');
             }
         }
         else
@@ -24,7 +24,7 @@ var harvester = {
             if(creep.transfer(Game.spawns['New berlin'], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE)
             {
                 creep.moveTo(Game.spawns['New berlin'], {visualizePathStyle: {stroke: _constants.CREEP_STORING_COLOR}});
-                //creep.say('Storing');
+                creep.say('Storing');
             }
         }
     },
