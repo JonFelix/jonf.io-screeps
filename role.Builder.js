@@ -28,9 +28,10 @@ var builder = {
                 var _minTarget = _targets[0];
                 for(var target in _targets)
                 {
-                    if(target.progressTotal - target.progress < _minTarget.progressTotal - _minTarget.progess)
+                    if(_targets[target].progressTotal - _targets[target].progress < _minTarget.progressTotal - _minTarget.progress)
                     {
-                        _minTarget = target;
+                        _minTarget = _targets[target];
+                        
                     }
                 }
                 if(creep.build(_minTarget) == ERR_NOT_IN_RANGE)
