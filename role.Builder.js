@@ -33,9 +33,11 @@ var builder = {
         }
         else
         {
-            if(Game.spawns['Berlin'].transferEnergy(creep, creep.carryCapacity) == ERR_NOT_IN_RANGE)
+            var _resources = creep.room.find(FIND_SOURCES);
+            if(creep.harvest(_resources[0]) == ERR_NOT_IN_RANGE)
             {
-                creep.moveTo(Game.spawns['Berlin'], {visualizePathStyle: {stroke: _constants.CREEP_GATHERING_COLOR}});
+                creep.moveTo(_resources[0], {visualizePathStyle: {stroke: _constants.CREEP_GATHERING_COLOR}});
+                creep.say('Gathering');
             }
         }
     },
