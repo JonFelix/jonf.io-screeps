@@ -2,6 +2,7 @@ var _constants = require('tools.Constants');
 var _creepRoles = [require('role.Harvester'), require('role.Upgrader'), require('role.Builder')];
 var _randomString = require('tools.RandomString');
 var _gc = require('tools.GarbageCollector');
+var _std = require('tools.Std');
 
 
 var _roleToSpawn = 0;
@@ -14,7 +15,7 @@ module.exports.loop = function() {
     {
         if(Game.spawns[name].energy >= _workerCost)
         {
-            if(Game.creeps.length < 10 || !Game.creeps.length)
+            if(_std.HashLength(Game.creeps) < 10)
             {
                 var _name = _randomString.generate()
                 console.log(_name + ": Spawning");
