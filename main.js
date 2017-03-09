@@ -3,7 +3,7 @@ var _creepRoles = {harvester:require('role.Harvester'), upgrader:require('role.U
 var _randomString = require('tools.RandomString');
 
 
-
+var _roleToSpawn = 0;
 
 module.exports.loop = function() {
     // executed every tick
@@ -20,7 +20,7 @@ module.exports.loop = function() {
     }
     for(var name in Game.creeps)
     {
-        if(Game.creeps[name].ticksToLive <= 0)
+        if(Game.creeps[name].ticksToLive <= 10)
         {
             console.log(name + ": Suicide");
             Game.creeps[name].suicide();
@@ -42,30 +42,12 @@ module.exports.loop = function() {
         }
         else if(!Game.creeps[name].spawning)
         {
-            var _harvesterCount = 0;
-            var _upgraderCount = 0;
-            for(var i = 0; i < Game.creeps.length; i++)
+            if(_roleToSpawn = _creepRoles.length)
             {
-                if(!Game.creeps[i].spawning)
-                {
-                    if(Game.creeps[i].memory.role == _constants.CREEP_ROLE_HARVESTER)
-                    {
-                        _harvesterCount++;  
-                    }
-                    if(Game.creeps[i].memory.role == _constants.CREEP_ROLE_UPGRADER)
-                    {
-                        _upgraderCount++;  
-                    }
-                    if(_upgraderCount < _harvesterCount)
-                    {
-                        Game.creeps[name].memory.role = _constants.CREEP_ROLE_UPGRADER;
-                    }
-                    else
-                    {
-                        Game.creeps[name].memory.role = _constants.CREEP_ROLE_HARVESTER;    
-                    }
-                }
+                _roleToSpawn = 0;
             }
+            Game.creeps[name].memory.role = _roleToSpawn;
+            _roleToSpawn++;
         }
     }
 }
