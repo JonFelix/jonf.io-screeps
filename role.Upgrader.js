@@ -9,7 +9,7 @@
 
 var upgrader = {
     run: function(creep) {
-        if(creep.carry.energy < creep.carryCapacity)
+        if(creep.carry.energy <= 0)
         {
             if(Game.spawns['Berlin'].transferEnergy(creep, creep.carryCapacity) == ERR_NOT_IN_RANGE)
             {
