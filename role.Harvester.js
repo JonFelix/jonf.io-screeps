@@ -1,11 +1,3 @@
-/*
- * Module code goes here. Use 'module.exports' to export things:
- * module.exports.thing = 'a thing';
- *
- * You can import it from another modules like this:
- * var mod = require('role.Harvester');
- * mod.thing == 'a thing'; // true
- */
 var _constants = require('tools.Constants');
 var harvester = {
     run: function(creep) {

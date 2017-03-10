@@ -1,12 +1,3 @@
-/*
- * Module code goes here. Use 'module.exports' to export things:
- * module.exports.thing = 'a thing';
- *
- * You can import it from another modules like this:
- * var mod = require('tools.Constants');
- * mod.thing == 'a thing'; // true
- */
-
 module.exports.CREEP_PART_WORK_COST          = 100;
 module.exports.CREEP_PART_MOVE_COST          = 50;
 module.exports.CREEP_PART_CARRY_COST         = 50;
