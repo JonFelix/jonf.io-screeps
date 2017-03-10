@@ -11,7 +11,6 @@ var harvester = {
     run: function(creep) {
         if(creep.carry.energy < creep.carryCapacity)
         {
-            
             var _resources = creep.room.find(FIND_SOURCES);
             if(creep.harvest(_resources[0]) == ERR_NOT_IN_RANGE)
             {
@@ -21,10 +20,19 @@ var harvester = {
         }
         else
         {
-            if(creep.transfer(Game.spawns['New berlin'], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE)
+            var _storage = creep.room.find(FIND_MY_STRUCTURES).filter(function(obj) {
+                return obj.structureType == STRUCTURE_EXTENSION || obj.structureType == STRUCTURE_SPAWN || obj.structureType == STRUCTURE_STORAGE;
+                });
+            for(var index in _storage)
             {
-                creep.moveTo(Game.spawns['New berlin'], {visualizePathStyle: {stroke: _constants.CREEP_STORING_COLOR}});
-                creep.say('Storing');
+                if(_storage[index].energy < _storage[index].energyCapacity)
+                {
+                    if(creep.transfer(_storage[index], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE)
+                    {
+                        creep.moveTo(_storage[index], {visualizePathStyle: {stroke: _constants.CREEP_STORING_COLOR}});
+                        creep.say('Storing');
+                    }
+                }
             }
         }
     },

@@ -7,4 +7,5 @@
  * mod.thing == 'a thing'; // true
  */
 
-module.exports.CreepCount = 15;
+module.exports.CreepCount = 12;
+module.exports.KillOnTick = 10;

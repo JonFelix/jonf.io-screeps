@@ -25,7 +25,7 @@ module.exports.loop = function() {
     }
     for(var name in Game.creeps)
     {
-        if(Game.creeps[name].ticksToLive <= 10)
+        if(Game.creeps[name].ticksToLive <= _settings.KillOnTick)
         {
             console.log(name + ": Suicide");
             Game.creeps[name].suicide();
@@ -35,9 +35,25 @@ module.exports.loop = function() {
             var _role = Game.creeps[name].memory.role;
             if(_role == 0)
             {
-                if(Game.creeps[name].room.find(FIND_MY_SPAWNS)[0].energy == Game.creeps[name].room.find(FIND_MY_SPAWNS)[0].energyCapacity) // TEMPORARY FIX
+                //if(Game.creeps[name].room.find(FIND_MY_SPAWNS)[0].energy == Game.creeps[name].room.find(FIND_MY_SPAWNS)[0].energyCapacity) // TEMPORARY FIX
+                //{
+                //    console.log(Game.creeps[name].room.find(FIND_MY_SPAWNS)[0].name + " is full on Energy, temporary switch " + name + "'s role to Upgrader");
+                //    _role = 1;
+                //}
+                var _storage = Game.creeps[name].room.find(FIND_MY_STRUCTURES).filter(function(obj) {
+                return obj.structureType == STRUCTURE_EXTENSION || obj.structureType == STRUCTURE_SPAWN || obj.structureType == STRUCTURE_STORAGE;
+                });
+                var _storageIsEmpty = false;
+                for(var index in _storage)
                 {
-                    console.log(Game.creeps[name].room.find(FIND_MY_SPAWNS)[0].name + " is full on Energy, temporary switch " + name + "'s role to Upgrader");
+                    if(_storage[index].energy < _storage[index].energyCapacity)
+                    {
+                        _storageIsEmpty = true;
+                        break;
+                    }
+                }
+                if(!_storageIsEmpty)
+                {
                     _role = 1;
                 }
             }
